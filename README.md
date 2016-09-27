@@ -2,7 +2,7 @@
 A POC for E2E Testing in Java using Cucumber 
 
 ##Functionality:
-###Load LinkedIn Homepage https://www.linkedin.com
+###Load LinkedIn Homepage
     *Validate Join Now is Shown
     *Validate Text box for Email, Password is shown along with SignIn Button
     *Validate Footer is shown with configured link captions
