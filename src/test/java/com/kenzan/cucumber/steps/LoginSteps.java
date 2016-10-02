@@ -1,6 +1,7 @@
 package com.kenzan.cucumber.steps;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -22,31 +23,37 @@ import cucumber.api.java.en.Given;
 @ContextConfiguration(classes = CucumberApplication.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
-public class LoadHomePageSteps {
+public class LoginSteps {
 
     @Autowired
     public HomePage homePage;
 
-    private static final Logger logger = LoggerFactory.getLogger(LoadHomePageSteps.class);
+    @Value("${login.username}")
+    String email;
+    @Value("${login.password}")
+    String password;
+    @Value("${loggedin.name}")
+    String name;
+
+    @Value("${loggedin.url}")
+    private String loggedInURL;
     
-    @Given("^I load the homepage$")
-    public void loadHomepage() throws Throwable {
-        homePage.loadHomePage();
-        logger.info("Load Homepage Executed: "+homePage.getCurrentURL());
+    private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
+    
+    @Given("^I login$")
+    public void login() throws Throwable {
+        homePage.login(email, password);
+        logger.info("Login Executed: "+homePage.getCurrentURL());
     }
 
-    @And("^I see Join Now$")
-    public void validateJoinNow() throws Throwable {
-        assertTrue(homePage.validateJoinNow());
+    @And("^I can be logged in$")
+    public void validateLoggedIn() throws Throwable {
+        assertEquals(loggedInURL, homePage.getCurrentURL());
     }
 
-    @And("^I can see Login Placeholders$")
-    public void validateLoginPlaceholders() throws Throwable {
-        assertTrue(homePage.validateLoginPlaceholders());
+    @And("^I can see My name$")
+    public void validateMyName() throws Throwable {
+        assertEquals(name, homePage.getLoggedInUsername());
     }
 
-    @And("^I can see Footer is shown$")
-    public void validateFooter() throws Throwable {
-        assertTrue(homePage.validateFooter());
-    }
 }
