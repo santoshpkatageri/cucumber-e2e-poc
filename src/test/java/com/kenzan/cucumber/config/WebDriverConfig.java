@@ -5,6 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 
+ * Configuration Class to create the Web Driver.
+ * 
+ */
 @Configuration
 public class WebDriverConfig {
     

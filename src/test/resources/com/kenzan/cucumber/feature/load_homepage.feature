@@ -1,5 +1,6 @@
 Feature: Load Homepage
 
+  @Critical
   Scenario: Load homepage
     When I load the homepage
     And I see Join Now

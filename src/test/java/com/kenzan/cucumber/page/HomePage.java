@@ -1,6 +1,5 @@
 package com.kenzan.cucumber.page;
 
-
 import javax.annotation.PostConstruct;
 
 import org.apache.logging.log4j.util.Strings;
@@ -16,6 +15,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Class for HomePage. This class provides access to components of
+ * HomePage.
+ * 
+ */
 @Component
 @Configuration
 public class HomePage{
@@ -86,6 +91,8 @@ public class HomePage{
     }
     
     public void login(final String email, final String password){
+        loadHomePage();
+        
         getLoginPlaceholders();
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
