@@ -1,6 +1,7 @@
 package com.kenzan.cucumber.page;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.apache.logging.log4j.util.Strings;
 import org.openqa.selenium.By;
@@ -56,6 +57,14 @@ public class HomePage{
     public void init() {
         logger.info("Initializing Page Object: " + this.getClass().getSimpleName());
         PageFactory.initElements(webDriver, this);
+    }
+    
+    @PreDestroy
+    public void close() {
+        if ( webDriver != null ) {
+            logger.info("Closing Web Driver");
+            webDriver.quit();
+        }
     }
     
     public void loadHomePage(){
