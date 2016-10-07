@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kenzan.cucumber.CucumberApplication;
 import com.kenzan.cucumber.page.HomePage;
+import com.netflix.config.DynamicPropertyFactory;
+import com.netflix.config.DynamicStringProperty;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -51,12 +53,14 @@ public class LoginSteps {
 
     @And("^I can be logged in$")
     public void validateLoggedIn() throws Throwable {
-        assertThat("Login Failed", loggedInURL, equalTo(homePage.getCurrentURL()));
+        assertThat("Login Failed", homePage.getCurrentURL(), equalTo(loggedInURL));
     }
 
     @And("^I can see My name$")
     public void validateMyName() throws Throwable {
-        assertThat("Logged In Username does not match", name, equalTo(homePage.getLoggedInUsername()));
+        DynamicStringProperty myprop = DynamicPropertyFactory.getInstance().getStringProperty("loadHomePage.url", "NOT FOUND");
+        logger.info("Login Executed, My Name: "+myprop.get());
+        assertThat("Logged In Username does not match", homePage.getLoggedInUsername(), equalTo(name));
     }
 
 }

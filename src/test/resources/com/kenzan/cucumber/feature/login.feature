@@ -1,4 +1,4 @@
-Feature: Login Tes
+Feature: Login Test
 
   Scenario: Login
     When I login
