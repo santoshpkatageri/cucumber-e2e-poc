@@ -40,21 +40,20 @@ public class LoadHomePageSteps {
     public void loadHomepage() throws Throwable {
         logger.info("Execution Enviroment: "+environment);
         homePage.loadHomePage();
-        logger.info("Load Homepage Executed: "+homePage.getCurrentURL());
     }
 
     @And("^I see Join Now$")
     public void validateJoinNow() throws Throwable {
-        assertThat("Registration is not found", true, equalTo(homePage.validateJoinNow()));
+        assertThat("Registration is not found", homePage.validateJoinNow(), equalTo(true));
     }
 
     @And("^I can see Login Placeholders$")
     public void validateLoginPlaceholders() throws Throwable {
-        assertThat("Login form elements are not found", true, equalTo(homePage.validateLoginPlaceholders()));
+        assertThat("Login form elements are not found", homePage.validateLoginPlaceholders(), equalTo(true));
     }
 
     @And("^I can see Footer is shown$")
     public void validateFooter() throws Throwable {
-        assertThat("Footer is not found", true, equalTo(homePage.validateFooter()));
+        assertThat("Footer is not found", homePage.validateFooter(), equalTo(true));
     }
 }

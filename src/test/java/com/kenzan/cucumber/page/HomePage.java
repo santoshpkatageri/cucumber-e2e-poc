@@ -76,6 +76,7 @@ public class HomePage{
         try {
             webDriver.findElement(By.id(registration));
         } catch ( NoSuchElementException exception ) {
+            logger.error("Registration Form is missing in home page", exception);
             return false;
         }
         return true;
@@ -85,6 +86,7 @@ public class HomePage{
         try {
             getLoginPlaceholders();
         } catch ( NoSuchElementException exception ) {
+            logger.error("Login Place holders are missing in home page", exception);
             return false;
         }
         return true;
@@ -94,6 +96,7 @@ public class HomePage{
         try {
             webDriver.findElement(By.className(footer));
         } catch ( NoSuchElementException exception ) {
+            logger.error("Footer is missing in home page", exception);
             return false;
         }
         return true;
@@ -101,26 +104,21 @@ public class HomePage{
     
     public void login(final String email, final String password){
         loadHomePage();
-        
-        getLoginPlaceholders();
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        sigInButton.click();
-    }
-    
-    public boolean validateLoggedIn(){
         try {
-            webDriver.findElement(By.className(footer));
-        } catch ( NoSuchElementException exception ) {
-            return false;
+            getLoginPlaceholders();
+            emailInput.sendKeys(email);
+            passwordInput.sendKeys(password);
+            sigInButton.click();
+        } catch ( Exception exception ) {
+            logger.error("Login Failed: ", exception);
         }
-        return true;
     }
     
     public String getLoggedInUsername(){
         try {
             return webDriver.findElement(By.className(userName)).getText();
         } catch ( NoSuchElementException exception ) {
+            logger.error("Login Failed or Username details are not shown", exception);
             return Strings.EMPTY;
         }
     }
