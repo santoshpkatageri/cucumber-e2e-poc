@@ -41,7 +41,8 @@ public class CucumberConfig {
         return webDriver;
     }
 
-    @PostConstruct
+    //commenting as the config will be loaded from mvn command line arguments
+    /*@PostConstruct
     public void loadConfig() {
         final AbstractPollingScheduler scheduler = new FixedDelayPollingScheduler(0,1000,false);
         final DynamicConfiguration dynConfig = new DynamicConfiguration(
@@ -49,5 +50,5 @@ public class CucumberConfig {
                 scheduler);
         ConfigurationManager.loadPropertiesFromConfiguration(dynConfig);
         logger.info("Config Loaded");
-    }
+    }*/
 }
