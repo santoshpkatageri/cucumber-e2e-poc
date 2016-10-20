@@ -17,7 +17,7 @@ A POC for E2E Testing in Java using Cucumber
         * Properties can be loaded using maven command line arguments from a http service
     * Page Objects/Components
     * Priority based test scenarios
-    * Tests for 
+
 ##Execution:
     * Install Maven:
         http://maven.apache.org/install.html or http://brewformulas.org/Maven
