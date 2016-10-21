@@ -59,7 +59,7 @@ public class LoginSteps {
     @And("^I can see My name$")
     public void validateMyName() throws Throwable {
         DynamicStringProperty myprop = DynamicPropertyFactory.getInstance().getStringProperty("loadHomePage.url", "NOT FOUND");
-        logger.info("Login Executed, My Name: "+myprop.get());
+        logger.info("Load Home Page URL from Dynamic Configuration: "+myprop.get());
         assertThat("Logged In Username does not match", homePage.getLoggedInUsername(), equalTo(name));
     }
 
