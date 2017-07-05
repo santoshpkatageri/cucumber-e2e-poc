@@ -35,3 +35,18 @@ A POC for E2E Testing in Java using Cucumber
             mvn clean test -Dcucumber.options="--tags @Critical" -Dspring.profiles.active=stage
         * To Execute tests with properties loaded from http service
             mvn clean test -Darchaius.configurationSource.additionalUrls=https://raw.githubusercontent.com/kenzanmedia/cucumber-e2e-poc/develop/src/test/resources/application.properties?token=AT5lWdlLeEPZESGOvz768VKttMeihNDGks5YEmc8wA%3D%3D
+
+ ## LICENSE
+Copyright 2017 Kenzan, LLC <http://kenzan.com>
+ 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ 
+    http://www.apache.org/licenses/LICENSE-2.0
+ 
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
